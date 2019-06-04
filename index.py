@@ -14,6 +14,13 @@ app.layout = html.Div([
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
+    if pathname == '/':
+        return html.Div([
+            dcc.Link('Go to App 1', href='/app1'),
+            html.Br(),
+            dcc.Link('Go to App 2', href='/apps/app2')
+        ])
+
     if pathname == '/app1':
          return layout1
     elif pathname == '/apps/app2':
